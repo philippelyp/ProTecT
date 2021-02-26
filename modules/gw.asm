@@ -30,34 +30,34 @@
 ;********** Game Wizard detection
 ;           Alter decryption depending on detection
 
-main:			xor			ax,ax
-				mov			ds,ax
-				mov			ax,ds:[01C2h]
-				cmp			ax,ds:[0042h]
-				je			not_ok
-				cmp			ax,ds:[004eh]
-				je			not_ok
-				cmp			ax,ds:[00a2h]
-				je			not_ok
-				cmp			ax,ds:[0086h]
-				je			not_ok
-				mov			ax,cs
-				mov			bx,ax
-				mov			ds,bx
-				mov			ax,ds:[0000h]
-				sub			ax,0025h
-				mov			ds:[0000h],ax
-				ret
-not_ok:			mov			ax,cs
-				mov			bx,ax
-				mov			ds,bx
-				mov			ax,ds:[0000h]
-				add			ax,bx
-				mov			ds:[0000h],ax
-				ret
+main:                   xor               ax,ax
+                        mov               ds,ax
+                        mov               ax,ds:[01C2h]
+                        cmp               ax,ds:[0042h]
+                        je                not_ok
+                        cmp               ax,ds:[004eh]
+                        je                not_ok
+                        cmp               ax,ds:[00a2h]
+                        je                not_ok
+                        cmp               ax,ds:[0086h]
+                        je                not_ok
+                        mov               ax,cs
+                        mov               bx,ax
+                        mov               ds,bx
+                        mov               ax,ds:[0000h]
+                        sub               ax,0025h
+                        mov               ds:[0000h],ax
+                        ret
+not_ok:                 mov               ax,cs
+                        mov               bx,ax
+                        mov               ds,bx
+                        mov               ax,ds:[0000h]
+                        add               ax,bx
+                        mov               ds:[0000h],ax
+                        ret
 
 ;********** Padding the module to 64 bytes
 
-				db			18 dup (13)
+                        db                18 dup (13)
 
 END

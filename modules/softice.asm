@@ -27,29 +27,29 @@
 ;********** Soft-Ice detection
 ;           Alter decryption depending on detection
 
-main:				xor			ax,ax
-				mov			si,4647h
-				mov			di,4a4dh
-				int			03h
-				cmp			si,4647h
-				je 			ok
-				mov			ax,cs
-				mov			bx,ax
-				mov			ds,bx
-				mov			ax,ds:[0004h]
-				add			ax,bx
-				mov			ds:[0004h],ax
-				ret
-ok:				mov			ax,cs
-				mov			bx,ax
-				mov			ds,bx
-				mov			ax,ds:[0004h]
-				sub			ax,0100h
-				mov			ds:[0004h],ax
-				ret
+main:                   xor               ax,ax
+                        mov               si,4647h
+                        mov               di,4a4dh
+                        int               03h
+                        cmp               si,4647h
+                        je                ok
+                        mov               ax,cs
+                        mov               bx,ax
+                        mov               ds,bx
+                        mov               ax,ds:[0004h]
+                        add               ax,bx
+                        mov               ds:[0004h],ax
+                        ret
+ok:                     mov               ax,cs
+                        mov               bx,ax
+                        mov               ds,bx
+                        mov               ax,ds:[0004h]
+                        sub               ax,0100h
+                        mov               ds:[0004h],ax
+                        ret
 
 ;********** Padding the module to 64 bytes
 
-				db			34 dup (13)
+                        db                34 dup (13)
 
 END

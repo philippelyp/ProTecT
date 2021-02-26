@@ -26,47 +26,47 @@
 
 ;********** Checksum
 
-go_checksum:	mov			bx,cs
-				xor			cx,cx
-				mov			ds,bx
-				xchg		si,cx
-				mov			dx,ds
-				lodsw
-				push		ax
-				mov			es,dx
-				mov			cx,ax
-				lodsw
-				xor			dx,dx
-				push		ax
-				add			cx,ax
-				mov			di,dx
-				lodsw
-				add			cx,ax
-				mov			bx,cs
-				lodsw
-				mov			dx,12
-				add			cx,ax
-				lodsw
-				cmp			cx,ax
-				jne			not_ok
-				pop			bx
-				pop			ax
-				stosw
-				mov			ax,bx
-				stosw
-				ret
-not_ok:			mov			ax,dx
-				pop			cx
-				stosw
-				mov			ax,bx
-				stosw
-				add			di,6
-				pop			bx
-				stosw
-				ret
+go_checksum:            mov               bx,cs
+                        xor               cx,cx
+                        mov               ds,bx
+                        xchg              si,cx
+                        mov               dx,ds
+                        lodsw      
+                        push              ax
+                        mov               es,dx
+                        mov               cx,ax
+                        lodsw      
+                        xor               dx,dx
+                        push              ax
+                        add               cx,ax
+                        mov               di,dx
+                        lodsw      
+                        add               cx,ax
+                        mov               bx,cs
+                        lodsw      
+                        mov               dx,12
+                        add               cx,ax
+                        lodsw      
+                        cmp               cx,ax
+                        jne               not_ok
+                        pop               bx
+                        pop               ax
+                        stosw      
+                        mov               ax,bx
+                        stosw      
+                        ret      
+not_ok:                 mov               ax,dx
+                        pop               cx
+                        stosw      
+                        mov               ax,bx
+                        stosw      
+                        add               di,6
+                        pop               bx
+                        stosw
+                        ret
 
 ;********** Padding the module to 64 bytes
 
-				db			20 dup (13)
+                        db                20 dup (13)
 
 END

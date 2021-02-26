@@ -27,38 +27,38 @@
 ;********** Action Replay v1.3 detection
 ;           Alter decryption depending on detection
 
-main:			xor			ax,ax
-				mov			ds,ax
-				mov			ax,ds:[0042h]
-				mov			bx,ds:[0040h]
-				mov			ds,ax
-				mov			si,bx
-				lodsw
-				cmp			ax,539ch
-				jne			ok
-				lodsw
-				cmp			ax,2e06h
-				jne			ok
-				lodsw
-				cmp			ax,1e8bh
-				jne			ok
-				mov			ax,cs
-				mov			bx,ax
-				mov			ds,bx
-				mov			ax,ds:[0000h]
-				add			ax,bx
-				mov			ds:[0000h],ax
-				ret
-ok:				mov			ax,cs
-				mov			bx,ax
-				mov			ds,bx
-				mov			ax,ds:[0000h]
-				sub			ax,0100h
-				mov			ds:[0000h],ax
-				ret
+main:                   xor               ax,ax
+                        mov               ds,ax
+                        mov               ax,ds:[0042h]
+                        mov               bx,ds:[0040h]
+                        mov               ds,ax
+                        mov               si,bx
+                        lodsw      
+                        cmp               ax,539ch
+                        jne               ok
+                        lodsw      
+                        cmp               ax,2e06h
+                        jne               ok
+                        lodsw      
+                        cmp               ax,1e8bh
+                        jne               ok
+                        mov               ax,cs
+                        mov               bx,ax
+                        mov               ds,bx
+                        mov               ax,ds:[0000h]
+                        add               ax,bx
+                        mov               ds:[0000h],ax
+                        ret      
+ok:                     mov               ax,cs
+                        mov               bx,ax
+                        mov               ds,bx
+                        mov               ax,ds:[0000h]
+                        sub               ax,0100h
+                        mov               ds:[0000h],ax
+                        ret
 
 ;********** Padding the module to 64 bytes
 
-				db			16 dup (13)
+                        db                16 dup (13)
 
 END

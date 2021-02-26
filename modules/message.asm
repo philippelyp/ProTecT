@@ -26,44 +26,44 @@
 
 ;********** Display an error message if we can't validate decryption
 
-main:			mov			cx,cs
-				xor			bx,bx
-				mov			ax,10
-				mov			ds,cx
-				add			bx,ax
-				xchg		si,bx
-				lodsw
-				cmp			ax,0
-				je			ok
-not_ok:			mov			ax,cs
-				mov			bx,0B800h
-				mov			ds,ax
-				mov			es,bx
-				mov			di,0
-go_message:		mov			si,OFFSET message
-				add			si,12
-				mov			bl,13
-				mov			cx,11
-				mov			ah,8ch
-print_message:	lodsb
-				xor			al,bl
-				stosw
-				add			bl,al
-				loop		print_message
-				cmp			di,4000h
-				jb			go_message
-				jmp			not_ok
+main:                   mov               cx,cs
+                        xor               bx,bx
+                        mov               ax,10
+                        mov               ds,cx
+                        add               bx,ax
+                        xchg              si,bx
+                        lodsw
+                        cmp               ax,0
+                        je                ok
+not_ok:                 mov               ax,cs
+                        mov               bx,0B800h
+                        mov               ds,ax
+                        mov               es,bx
+                        mov               di,0
+go_message:             mov               si,OFFSET message
+                        add               si,12
+                        mov               bl,13
+                        mov               cx,11
+                        mov               ah,8ch
+print_message:          lodsb
+                        xor               al,bl
+                        stosw
+                        add               bl,al
+                        loop              print_message
+                        cmp               di,4000h
+                        jb                go_message
+                        jmp               not_ok
 
 ;********** Encrypted error message
 
-message			db			93,47,160,110,239,168,87,249,65,40,138
+message                 db               93,47,160,110,239,168,87,249,65,40,138
 
 ;********** All good
 
-ok:				ret
+ok:                     ret
 
 ;********** Padding the module to 64 bytes
 
-				db			8 dup (13)
+                        db               8 dup (13)
 
 END

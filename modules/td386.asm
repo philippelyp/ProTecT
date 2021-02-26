@@ -27,32 +27,32 @@
 ;********** Turbo Debugger 386 detection
 ;           Alter decryption depending on detection
 
-main:				xor			ax,ax
-				mov			ds,ax
-				mov			ax,ds:[0002h]
-				mov			bx,ds:[0086h]
-				cmp			ax,bx
-				jne			ok
-				mov			cx,ds:[008ah]
-				cmp			bx,cx
-				jne			ok
-				mov			ax,cs
-				mov			bx,ax
-				mov			ds,bx
-				mov			ax,ds:[0006h]
-				add			ax,bx
-				mov			ds:[0006h],ax
-				ret
-ok:				mov			ax,cs
-				mov			bx,ax
-				mov			ds,bx
-				mov			ax,ds:[0006h]
-				sub			ax,0100h
-				mov			ds:[0006h],ax
-				ret
+main:                   xor               ax,ax
+                        mov               ds,ax
+                        mov               ax,ds:[0002h]
+                        mov               bx,ds:[0086h]
+                        cmp               ax,bx
+                        jne               ok
+                        mov               cx,ds:[008ah]
+                        cmp               bx,cx
+                        jne               ok
+                        mov               ax,cs
+                        mov               bx,ax
+                        mov               ds,bx
+                        mov               ax,ds:[0006h]
+                        add               ax,bx
+                        mov               ds:[0006h],ax
+                        ret
+ok:                     mov               ax,cs
+                        mov               bx,ax
+                        mov               ds,bx
+                        mov               ax,ds:[0006h]
+                        sub               ax,0100h
+                        mov               ds:[0006h],ax
+                        ret
 
 ;********** Padding the module to 64 bytes
 
-				db			26 dup (13)
+                        db                26 dup (13)
 
 END

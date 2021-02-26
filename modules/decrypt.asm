@@ -27,36 +27,36 @@
 ;********** Decrypt a number of paragraphs
 ;           How many paragraphs is passed on the stack
 
-main:				mov			ax,csv
-				mov			ds,ax
-				mov			bx,ds:[0006h]
-				push			bx
-				mov			bx,ds:[0004h]
-				mov			dx,bx
-				sub			ax,bx
-				mov			ds,ax
-				mov			es,ax
-				pop			bx
-decrypt_0:			mov			cx,8
-				mov			di,0
-				mov			si,0
-decrypt_1:			lodsw
-				xor			ax,bx
-				add			bx,ax
-				stosw
-				loop			decrypt_1
-				dec			dx
-				jz			ok
-				mov			ax,ds
-				inc			ax
-				mov			ds,ax
-				mov			ax,es
-				inc			ax
-				mov			es,ax
-				jmp			decrypt_0
-ok:				ret
+main:                   mov               ax,csv
+                        mov               ds,ax
+                        mov               bx,ds:[0006h]
+                        push              bx
+                        mov               bx,ds:[0004h]
+                        mov               dx,bx
+                        sub               ax,bx
+                        mov               ds,ax
+                        mov               es,ax
+                        pop               bx
+decrypt_0:              mov               cx,8
+                        mov               di,0
+                        mov               si,0
+decrypt_1:              lodsw
+                        xor               ax,bx
+                        add               bx,ax
+                        stosw
+                        loop              decrypt_1
+                        dec               dx
+                        jz                ok
+                        mov               ax,ds
+                        inc               ax
+                        mov               ds,ax
+                        mov               ax,es
+                        inc               ax
+                        mov               es,ax
+                        jmp               decrypt_0
+ok:                     ret
 
 ;********** Padding the module to 64 bytes
 
-				db			25 dup (13)
+                        db                25 dup (13)
 END

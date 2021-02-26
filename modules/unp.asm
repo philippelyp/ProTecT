@@ -27,29 +27,29 @@
 ;********** UNP detection
 ;           Alter decryption depending on detection
 
-main:			mov			ax,45F6h
-				push		ax
-				pop			ax
-				dec			sp
-				dec			sp
-				pop			bx
-				cmp			ax,bx
-				jne			not_ok
-				mov			ax,cs
-				mov			ds,ax
-				mov			ax,ds:[0000h]
-				sub			ax,0030h
-				mov			ds:[0000h],ax
-				ret
-not_ok:			mov			ax,cs
-				mov			ds,ax
-				mov			ax,ds:[0000h]
-				add			ax,bx
-				mov			ds:[0000h],ax
-				ret
+main:                   mov               ax,45F6h
+                        push              ax
+                        pop               ax
+                        dec               sp
+                        dec               sp
+                        pop               bx
+                        cmp               ax,bx
+                        jne               not_ok
+                        mov               ax,cs
+                        mov               ds,ax
+                        mov               ax,ds:[0000h]
+                        sub               ax,0030h
+                        mov               ds:[0000h],ax
+                        ret
+not_ok:                 mov               ax,cs
+                        mov               ds,ax
+                        mov               ax,ds:[0000h]
+                        add               ax,bx
+                        mov               ds:[0000h],ax
+                        ret
 
 ;********** Padding the module to 64 bytes
 
-				db			41 dup (13)
+                        db               41 dup (13)
 
 END
