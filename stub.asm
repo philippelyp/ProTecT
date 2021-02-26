@@ -293,7 +293,7 @@ smoke_stack:            pop               ds
 
 ;********** jump to the entry point
 
-                        jmp       [program]
+                        jmp               [program]
 
 ;********** decrypt and execute a module
 
