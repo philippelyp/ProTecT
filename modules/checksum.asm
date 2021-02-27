@@ -26,7 +26,7 @@
 
 ;********** Checksum
 
-go_checksum:            mov               bx,cs
+main:                   mov               bx,cs
                         xor               cx,cx
                         mov               ds,bx
                         xchg              si,cx
