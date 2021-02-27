@@ -33,6 +33,11 @@ This packer use a number of interesting techniques that are still relevant today
   * This break instruction decoding by the debugger
   * Debugger have improved significantly but, surprisingly, this is still somewhat effective
 
+### Test executable
+
+`test_u.exe` is the unprotected test executable
+`test_p.exe` is the protected test executable
+
 ### Contact
 
 If you have any questions, feel free to contact me at philippe@paquet.email
